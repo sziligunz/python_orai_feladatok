@@ -1,0 +1,1 @@
+# python_orai_feladatok
