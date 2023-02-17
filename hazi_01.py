@@ -23,7 +23,7 @@ class Cipo(Labbeli):
         return self.kopottsag < 10
 
     def menosegi_faktor(self):
-        return len(self.marka) // len(self.szin)
+        return (len(self.marka) + len(self.szin)) // 2
 
     def visel(self):
         self.kopottsag += 1
@@ -55,22 +55,6 @@ class HelloKittyCsizma(Cipo, Csizma):
     def __init__(self, szin):
         super().__init__(marka="Hello Kitty csizma", szin=szin, szar_magassag=25)
 
+    @property
     def viselheto(self):
-        pass
-        # ERROR, CANT CALL THE RIGHT PARENT FUNCTIONS
-        print(super(Csizma, self).viselheto)
-        print(super(Cipo, self).viselheto)
-        return super(Csizma, self).viselheto and super(Cipo, self).viselheto
-
-
-if __name__ == '__main__':
-    try:
-        l = Labbeli()
-    except Exception as e:
-        print("Labbeli can't be instatiated -> " + str(e))
-    c = Cipo("nike", "piros")
-    con = Converse("kek")
-    cs = Csizma(30)
-    hkcs = HelloKittyCsizma("pink")
-
-    print(hkcs.viselheto())
+        return Csizma.viselheto.fget(self) and Cipo.viselheto.fget(self)
