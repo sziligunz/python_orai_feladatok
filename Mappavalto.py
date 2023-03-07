@@ -11,3 +11,8 @@ class Mappavalto:
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         os.chdir(os.path.abspath(self.original))
+
+
+with Mappavalto("../"):
+    pass
+
